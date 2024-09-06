@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en" class="light">
+    <head>
+        <title>Calculator</title>
+        <meta charset="utf-8">
+        <link href="./style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <div class="calculator">
+            <div class="title-bar">
+                <div class="title">Calculator</div>
+                <div class="theme-toggle"
+                    <button id="theme-toggle-btn">
+                        <img src="./icons/moon.svg" alt="dark_mode">
+                    </button>
+                </div>
+            </div>
+            <div class="display">
+                <div class="upper"></div>
+                <div class="lower"></div>
+            </div>
+            <div class="buttons">
+                <div class="left">
+                    <div class="actions">
+                        <button id="ac">AC</button>
+                        <button id="+/-">+/-</button>
+                        <button id="%" class="operator">%</button>
+                    </div>
+                    <div class="numbers">
+                        <button id="9">9</button>
+                        <button id="8">8</button>
+                        <button id="7">7</button>
+                        <button id="6">6</button>
+                        <button id="5">5</button>
+                        <button id="4">4</button>
+                        <button id="3">3</button>
+                        <button id="2">2</button>
+                        <button id="1">1</button>
+                        <button id=".">.</button>
+                        <button id="0">0</button>
+                    </div>
+                </div>
+                <div class="right">
+                    <button id="/" class="operator">/</button>
+                    <button id="*" class="operator">*</button>
+                    <button id="-" class="operator">-</button>
+                    <button id="+" class="operator">+</button>
+                    <button id="=" class="operator">=</button>
+                </div>
+            </div>
+        </div>
+
+        <script src="./script.js"></script>
+    </body>
+</html>
