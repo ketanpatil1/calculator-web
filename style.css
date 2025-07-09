@@ -58,6 +58,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    position: fixed;
 }
 
 .title-bar {
@@ -74,15 +75,12 @@ body {
     flex: 1 auto;
 }
 
-.theme-toggle {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 #theme-toggle-btn {
     background-color: rgba(0, 0, 0, 0);
     flex: 0 auto;
+    position: absolute;
+    right: 32px;
+    top: 24px;
 }
 
 img {
@@ -123,7 +121,7 @@ img {
     overflow: auto;
 }
 
-button {
+.buttons button {
     display: block;
     background-color: var(--normal-btn-color);
     font-size: 28px;
@@ -132,7 +130,7 @@ button {
     border-radius: 20px;
 }
 
-button:hover {
+.buttons button:hover {
     background-color: var(--normal-btn-color-hover);
 }
 
