@@ -1,11 +1,8 @@
 const root = document.documentElement;
 const themeToggleBtn = document.querySelector("#theme-toggle-btn");
-const themeToggleIcon = document.querySelector("#theme-toggle-btn > img");
 themeToggleBtn.addEventListener ("click", toggleTheme);
 
 if (localStorage.getItem("theme") == "dark") {
-    themeToggleIcon.src = "./icons/sun.svg";
-    themeToggleIcon.alt = "toggle_light_mode";
     root.classList.toggle("light");
     root.classList.toggle("dark");
 } else {
@@ -16,12 +13,8 @@ function toggleTheme() {
     root.classList.toggle("light");
     root.classList.toggle("dark");
     if (localStorage.getItem("theme") === "light") {
-        themeToggleIcon.src = "./icons/sun.svg";
-        themeToggleIcon.alt = "toggle_light_mode";
         localStorage.setItem("theme", "dark");
     } else {
-        themeToggleIcon.src = "./icons/moon.svg";
-        themeToggleIcon.alt = "toggle_dark_mode";
         localStorage.setItem("theme", "light");
     }
 }

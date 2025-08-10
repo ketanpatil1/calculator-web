@@ -82,6 +82,19 @@ body {
     right: 32px;
     top: 24px;
 }
+#theme-toggle-btn svg {
+    width: 24px;
+    height: 24px;
+    position: absolute;
+    right: 100%;
+}
+:root.light .sun {
+    opacity: 0;
+}
+:root.dark .moon {
+    opacity: 0;
+}
+}
 
 img {
     width: 24px;
