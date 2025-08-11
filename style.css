@@ -88,12 +88,14 @@ body {
     position: absolute;
     right: 100%;
 }
-:root.light .sun {
-    opacity: 0;
-}
+:root.light .sun,
 :root.dark .moon {
     opacity: 0;
+    transform: rotate(-360deg);
 }
+.sun, .moon {
+    transform-origin: -12px 12px;
+    transition: opacity 400ms, transform 400ms;
 }
 
 img {
