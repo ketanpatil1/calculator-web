@@ -42,6 +42,14 @@
     color: var(--main-text-color);
 }
 
+body,
+.calculator,
+button,
+div {
+    transition-property: background-color, color;
+    transition-duration: 400ms;
+}
+
 body {
     background-color: var(--main-bg-color);
     height: 100vh;
