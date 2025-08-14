@@ -23,38 +23,59 @@ let operator = "";
 let operand1 = "";
 let operand2 = "";
 let expression = "";
-let isOperationDone = false;
+let operationDone = false;
 const upperDisplay = document.querySelector(".upper");
 const lowerDisplay = document.querySelector(".lower");
 
-const numbers = document.querySelector(".numbers");
-numbers.addEventListener ("click", (e) => {
-    if (e.target.id) {
-        if (!operator) {
-            if (!(e.target.id === "." && operand1.includes("."))) {
-                operand1 += e.target.id;
+function isOperatorPresent() {
+    return Boolean(operator);
+}
+function isOperationDone() {
+    return operationDone;
+}
+
+function containsDecimal(number) {
+    return number.includes(".");
+}
+
+// TODO: use classes for each button and separate "." button logic
+const numbers = document.querySelectorAll(".numbers button");
+for (const button of numbers) {
+    button.addEventListener ("click", (e) => {
+        if (isOperatorPresent()) {
+            if (button.id === ".") {
+                if (!containsDecimal(operand2)) {
+                    operand2 += button.id;
+                    lowerDisplay.textContent = operand2 + "0";
+                }
+            } else if (isOperationDone()) {
+                operand1 = button.id;
+                operand2 = "";
+                operator = "";
                 lowerDisplay.textContent = operand1;
                 upperDisplay.textContent = "";
+                operationDone = false;
+            } else {
+                operand2 += button.id;
+                lowerDisplay.textContent = operand2;
+                upperDisplay.textContent = operand1 + operator;
             }
         } else {
-            if (!(e.target.id === "." && operand2.includes("."))) {
-                if (!isOperationDone) {
-                    operand2 += e.target.id;
-                    lowerDisplay.textContent = operand2;
-                    upperDisplay.textContent = operand1 + operator;
-                } else {
-                    operand1 = e.target.id;
-                    operand2 = "";
-                    operator = "";
-                    lowerDisplay.textContent = operand1;
-                    upperDisplay.textContent = "";
-                    isOperationDone = false;
+            upperDisplay.textContent = "";
+            if (button.id === ".") {
+                if (!containsDecimal(operand1)) {
+                    operand1 += button.id;
+                    lowerDisplay.textContent = operand1 + "0";
                 }
+            } else {
+                operand1 += button.id;
+                lowerDisplay.textContent = operand1;
             }
         }
-    }
-});
+    });
+}
 
+// TODO: fix consecutive "." and operator
 const operators = document.querySelectorAll(".operator");
 for (op of operators) {
     op.addEventListener ("click", (e) => {
@@ -65,22 +86,22 @@ for (op of operators) {
             } else if (operator && operand2) {
                 upperDisplay.textContent = operand1 + operator + operand2;
                 if (e.target.id === "=") {
-                    isOperationDone = false;
+                    operationDone = false;
                 }
-                if (!isOperationDone) {
+                if (!isOperationDone()) {
                     operand1 = operate(operator, operand1, operand2);
                 }
                 if (e.target.id !== "=") {
                     operand2 = "";
                     operator = e.target.id;
                     lowerDisplay.textContent = operand1 + operator;
-                    if (isOperationDone) {
+                    if (isOperationDone()) {
                         upperDisplay.textContent = "";
                     }
-                    isOperationDone = false;
+                    operationDone = false;
                 } else {
                     lowerDisplay.textContent = operand1;
-                    isOperationDone = true;
+                    operationDone = true;
                 }
             }
         }
@@ -96,24 +117,24 @@ actions.addEventListener("click", (e) => {
             operand2 = "";
             lowerDisplay.textContent = "";
             upperDisplay.textContent = "";
-            isOperationDone = false;
+            operationDone = false;
             break;
         case "+/-":
-            if (operand2 && !isOperationDone) {
+            if (operand2 && !isOperationDone()) {
                 operand2 = operand2 * -1;
                 lowerDisplay.textContent = operand2;
             } else if (operand1) {
                 operand1 = operand1 * -1;
                 lowerDisplay.textContent = operand1;
             }
-            if (!operand2 && !isOperationDone) {
+            if (!operand2 && !isOperationDone()) {
                 lowerDisplay.textContent += operator;
             }
-            if (isOperationDone) {
+            if (isOperationDone()) {
                 operator = "";
                 operand2 = "";
                 upperDisplay.textContent = "";
-                isOperationDone = false;
+                operationDone = false;
             }
             break;
         case "%":
