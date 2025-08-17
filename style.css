@@ -52,7 +52,7 @@ div {
 
 body {
     background-color: var(--main-bg-color);
-    height: 100vh;
+    height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,6 +67,9 @@ body {
     flex-direction: column;
     gap: 20px;
     position: fixed;
+    width: 90vw;
+    max-width: 470px;
+    max-height: 90%;
 }
 
 .title-bar {
@@ -148,9 +151,8 @@ img {
     display: block;
     background-color: var(--normal-btn-color);
     font-size: 28px;
-    width: 100px;
-    height: 100px;
     border-radius: 20px;
+    aspect-ratio: 1;
 }
 
 .buttons button:hover {
@@ -158,12 +160,10 @@ img {
 }
 
 .buttons {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 10px;
-}
-
-button[id="0"] {
-    flex: auto;
 }
 
 button[id="="] {
@@ -175,14 +175,11 @@ button[id="="]:hover {
     background-color: var(--equal-btn-color-hover);
 }
 
-.left {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 .actions {
-    display: flex;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
     gap: 10px;
 }
 
@@ -195,15 +192,20 @@ button[id="="]:hover {
 }
 
 .numbers {
-    width: 320px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row-reverse;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: 1 / 4;
+    grid-template-rows: subgrid;
+    grid-row: 2 / -1;
+    direction: rtl;
     gap: 10px;
 }
 
 .right {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: subgrid;
+    grid-column: -2 / -1;
+    grid-template-rows: subgrid;
+    grid-row: 1 / -1;
     gap: 10px;
 }
