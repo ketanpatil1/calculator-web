@@ -9,7 +9,6 @@
     --equal-btn-color: #004499;
     --equal-btn-color-hover: #002266;
 }
-
 :root.dark {
     --main-bg-color: #121212;
     --main-text-color: #cff7ff;
@@ -26,7 +25,6 @@
     font-family: "JetBrains Mono";
     src: url(./fonts/jetbrains-mono_5.0.18/jetbrains-mono-latin-600-normal.woff2);
 }
-
 @font-face {
     font-family: "Exo 2";
     src: url(./fonts/exo-2_5.0.16/exo-2-latin-600-normal.woff2);
@@ -37,13 +35,15 @@
     padding: 0;
     border: 0;
     box-sizing: border-box;
-    font-family: "Exo 2", sans-serif;
+    font-family: inherit;
     font-weight: 600;
     color: var(--main-text-color);
 }
+html {
+    font-family: "Exo 2", sans-serif;
+}
 
 body,
-.calculator,
 button,
 div {
     transition-property: background-color, color;
@@ -59,7 +59,6 @@ body {
 }
 
 .calculator {
-    background-color: var(--main-bg-color);
     border: 2px solid var(--faded-content-color);
     border-radius: 40px;
     padding: 20px;
@@ -69,26 +68,14 @@ body {
     position: fixed;
     width: 90vw;
     max-width: 470px;
-    max-height: 90%;
-}
-
-.title-bar {
-    width: auto;
-    text-align: center;
-    font-size: 24px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 16px;
 }
 
 .title {
-    flex: 1 auto;
+    text-align: center;
+    font-size: 24px;
 }
 
 #theme-toggle-btn {
-    background-color: rgba(0, 0, 0, 0);
-    flex: 0 auto;
     position: absolute;
     right: 32px;
     top: 24px;
@@ -109,52 +96,34 @@ body {
     transition: opacity 400ms, transform 400ms;
 }
 
-img {
-    width: 24px;
-}
-
 .display {
-    background-color: var(--main-bg-color);
-    width: auto;
-    max-width: 430px;
-    font-size: 24px;
+    font-family: "JetBrains Mono", monospace;
     text-align: right;
     padding: 20px;
-    height: 150px;
     border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
 }
-
+.upper,
+.lower {
+    overflow: auto;
+}
 .upper {
     color: var(--faded-content-color);
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 600;
     font-size: 28px;
     line-height: 40px;
     height: 40px;
-    overflow: auto;
 }
-
 .lower {
-    color: var(--main-text-color);
-    font-family: "JetBrains Mono", monospace;
-    font-weight: 600;
     font-size: 40px;
     line-height: 70px;
     height: 70px;
-    overflow: auto;
 }
 
 .buttons button {
-    display: block;
     background-color: var(--normal-btn-color);
     font-size: 28px;
     border-radius: 20px;
     aspect-ratio: 1;
 }
-
 .buttons button:hover {
     background-color: var(--normal-btn-color-hover);
 }
@@ -170,7 +139,6 @@ button[id="="] {
     background-color: var(--equal-btn-color);
     color: var(--main-bg-color);
 }
-
 button[id="="]:hover {
     background-color: var(--equal-btn-color-hover);
 }
@@ -180,13 +148,11 @@ button[id="="]:hover {
     grid-template-columns: subgrid;
     grid-column: 1 / 4;
     grid-row: 1 / 2;
-    gap: 10px;
 }
 
 .numbers > button {
     background-color: var(--number-btn-color);
 }
-
 .numbers > button:hover {
     background-color: var(--number-btn-color-hover);
 }
@@ -198,7 +164,6 @@ button[id="="]:hover {
     grid-template-rows: subgrid;
     grid-row: 2 / -1;
     direction: rtl;
-    gap: 10px;
 }
 
 .right {
@@ -207,5 +172,4 @@ button[id="="]:hover {
     grid-column: -2 / -1;
     grid-template-rows: subgrid;
     grid-row: 1 / -1;
-    gap: 10px;
 }
