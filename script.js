@@ -122,11 +122,11 @@ for (const action of actions) {
                 break;
             case "+/-":
                 if (!isOperationDone()) {
-                    if (operand2) {
-                        operand2 *= -1;
+                    if (operand2.length) {
+                        operand2 = (operand2 * -1).toString();
                         lowerDisplay.textContent = operand2;
                     } else {
-                        operand1 *= -1;
+                        operand1 = (operand1 * -1).toString();
                         lowerDisplay.textContent = operand1 + operator;
                     }
                 } else {
