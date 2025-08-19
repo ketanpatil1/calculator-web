@@ -45,7 +45,11 @@ for (const button of numbers) {
         if (isOperatorPresent()) {
             if (button.id === ".") {
                 if (!containsDecimal(operand2)) {
+                    if (!operand2) {
+                        operand2 = "0";
+                    }
                     operand2 += button.id;
+                    upperDisplay.textContent = operand1 + operator;
                     lowerDisplay.textContent = operand2 + "0";
                 }
             } else if (isOperationDone()) {
@@ -64,6 +68,9 @@ for (const button of numbers) {
             upperDisplay.textContent = "";
             if (button.id === ".") {
                 if (!containsDecimal(operand1)) {
+                    if (!operand1) {
+                        operand1 = "0";
+                    }
                     operand1 += button.id;
                     lowerDisplay.textContent = operand1 + "0";
                 }
