@@ -108,39 +108,39 @@ for (op of operators) {
     });
 }
 
-const actions = document.querySelector(".actions");
-actions.addEventListener("click", (e) => {
-    switch (e.target.id) {
-        case "ac":
-            operator = "";
-            operand1 = "";
-            operand2 = "";
-            lowerDisplay.textContent = "";
-            upperDisplay.textContent = "";
-            operationDone = false;
-            break;
-        case "+/-":
-            if (operand2 && !isOperationDone()) {
-                operand2 = operand2 * -1;
-                lowerDisplay.textContent = operand2;
-            } else if (operand1) {
-                operand1 = operand1 * -1;
-                lowerDisplay.textContent = operand1;
-            }
-            if (!operand2 && !isOperationDone()) {
-                lowerDisplay.textContent += operator;
-            }
-            if (isOperationDone()) {
+const actions = document.querySelectorAll(".action");
+for (const action of actions) {
+    action.addEventListener("click", (e) => {
+        switch (action.id) {
+            case "ac":
                 operator = "";
+                operand1 = "";
                 operand2 = "";
+                lowerDisplay.textContent = "";
                 upperDisplay.textContent = "";
                 operationDone = false;
-            }
-            break;
-        case "%":
-            break;
-    }
-});
+                break;
+            case "+/-":
+                if (!isOperationDone()) {
+                    if (operand2) {
+                        operand2 *= -1;
+                        lowerDisplay.textContent = operand2;
+                    } else {
+                        operand1 *= -1;
+                        lowerDisplay.textContent = operand1 + operator;
+                    }
+                } else {
+                    operator = "";
+                    operand1 *= -1;
+                    operand2 = "";
+                    upperDisplay.textContent = "";
+                    lowerDisplay.textContent = operand1 + operator;
+                    operationDone = false;
+                }
+                break;
+        }
+    });
+}
 
 function add (num1, num2) {
     return +num1 + +num2;
