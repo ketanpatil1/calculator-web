@@ -84,36 +84,37 @@ for (const button of numbers) {
 
 // TODO: fix consecutive "." and operator
 const operators = document.querySelectorAll(".operator");
-for (op of operators) {
+for (const op of operators) {
     op.addEventListener ("click", (e) => {
-        if (e.target.id && operand1) {
-            if ((!operator || !operand2) && e.target.id !== "=") {
-                operator = e.target.id;
+        if (operand1) {
+            if ((!operator || !operand2)) {
+                operator = op.id;
                 lowerDisplay.textContent = operand1 + operator;
             } else if (operator && operand2) {
-                upperDisplay.textContent = operand1 + operator + operand2;
-                if (e.target.id === "=") {
-                    operationDone = false;
-                }
-                if (!isOperationDone()) {
+                if (isOperationDone()) {
+                    upperDisplay.textContent = "";
+                } else {
+                    upperDisplay.textContent = operand1 + operator + operand2;
                     operand1 = operate(operator, operand1, operand2);
                 }
-                if (e.target.id !== "=") {
-                    operand2 = "";
-                    operator = e.target.id;
-                    lowerDisplay.textContent = operand1 + operator;
-                    if (isOperationDone()) {
-                        upperDisplay.textContent = "";
-                    }
-                    operationDone = false;
-                } else {
-                    lowerDisplay.textContent = operand1;
-                    operationDone = true;
-                }
+                operand2 = "";
+                operator = op.id;
+                lowerDisplay.textContent = operand1 + operator;
+                operationDone = false;
             }
         }
     });
 }
+
+const equalsBtn = document.getElementById("=");
+equalsBtn.addEventListener("click", () => {
+    if (operand2) {
+        upperDisplay.textContent = operand1 + operator + operand2;
+        operand1 = operate(operator, operand1, operand2);
+        lowerDisplay.textContent = operand1;
+        operationDone = true;
+    }
+});
 
 const actions = document.querySelectorAll(".action");
 for (const action of actions) {
