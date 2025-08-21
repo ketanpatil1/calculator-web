@@ -38,49 +38,51 @@ function containsDecimal(number) {
     return number.includes(".");
 }
 
-// TODO: use classes for each button and separate "." button logic
-const numbers = document.querySelectorAll(".numbers button");
-for (const button of numbers) {
-    button.addEventListener ("click", (e) => {
+const numbers = document.querySelectorAll(".number");
+for (const number of numbers) {
+    number.addEventListener ("click", (e) => {
         if (isOperatorPresent()) {
-            if (button.id === ".") {
-                if (!containsDecimal(operand2)) {
-                    if (!operand2) {
-                        operand2 = "0";
-                    }
-                    operand2 += button.id;
-                    upperDisplay.textContent = operand1 + operator;
-                    lowerDisplay.textContent = operand2 + "0";
-                }
-            } else if (isOperationDone()) {
-                operand1 = button.id;
+            if (isOperationDone()) {
+                operand1 = number.id;
                 operand2 = "";
                 operator = "";
                 lowerDisplay.textContent = operand1;
                 upperDisplay.textContent = "";
                 operationDone = false;
             } else {
-                operand2 += button.id;
+                operand2 += number.id;
                 lowerDisplay.textContent = operand2;
                 upperDisplay.textContent = operand1 + operator;
             }
         } else {
             upperDisplay.textContent = "";
-            if (button.id === ".") {
-                if (!containsDecimal(operand1)) {
-                    if (!operand1) {
-                        operand1 = "0";
-                    }
-                    operand1 += button.id;
-                    lowerDisplay.textContent = operand1 + "0";
-                }
-            } else {
-                operand1 += button.id;
-                lowerDisplay.textContent = operand1;
-            }
+            operand1 += number.id;
+            lowerDisplay.textContent = operand1;
         }
     });
 }
+
+const decimalBtn = document.getElementById(".");
+decimalBtn.addEventListener("click", () => {
+    if (isOperatorPresent()) {
+        if (!containsDecimal(operand2)) {
+            if (!operand2) {
+                operand2 = "0";
+            }
+            operand2 += ".";
+            upperDisplay.textContent = operand1 + operator;
+            lowerDisplay.textContent = operand2 + "0";
+        }
+    } else {
+        if (!containsDecimal(operand1)) {
+            if (!operand1) {
+                operand1 = "0";
+            }
+            operand1 += ".";
+            lowerDisplay.textContent = operand1 + "0";
+        }
+    }
+})
 
 // TODO: fix consecutive "." and operator
 const operators = document.querySelectorAll(".operator");

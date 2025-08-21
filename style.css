@@ -150,14 +150,14 @@ button[id="="]:hover {
     grid-row: 1 / 2;
 }
 
-.numbers > button {
+.buttons .main > button {
     background-color: var(--number-btn-color);
 }
-.numbers > button:hover {
+.buttons .main > button:hover {
     background-color: var(--number-btn-color-hover);
 }
 
-.numbers {
+.buttons .main {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: 1 / 4;
@@ -166,7 +166,7 @@ button[id="="]:hover {
     direction: rtl;
 }
 
-.right {
+.buttons .right {
     display: grid;
     grid-template-columns: subgrid;
     grid-column: -2 / -1;
