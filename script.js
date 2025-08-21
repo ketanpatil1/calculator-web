@@ -84,15 +84,20 @@ decimalBtn.addEventListener("click", () => {
     }
 })
 
-// TODO: fix consecutive "." and operator
+function stripTrailingDecimal(numString) {
+    return numString.endsWith(".") ? numString.slice(0, -1) : numString;
+}
+
 const operators = document.querySelectorAll(".operator");
 for (const op of operators) {
     op.addEventListener ("click", (e) => {
         if (operand1) {
             if ((!operator || !operand2)) {
+                operand1 = stripTrailingDecimal(operand1);
                 operator = op.id;
                 lowerDisplay.textContent = operand1 + operator;
             } else if (operator && operand2) {
+                operand2 = stripTrailingDecimal(operand2);
                 if (isOperationDone()) {
                     upperDisplay.textContent = "";
                 } else {
@@ -111,6 +116,7 @@ for (const op of operators) {
 const equalsBtn = document.getElementById("=");
 equalsBtn.addEventListener("click", () => {
     if (operand2) {
+        operand2 = stripTrailingDecimal(operand2);
         upperDisplay.textContent = operand1 + operator + operand2;
         operand1 = operate(operator, operand1, operand2);
         lowerDisplay.textContent = operand1;
