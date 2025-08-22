@@ -157,6 +157,34 @@ for (const action of actions) {
     });
 }
 
+function stripTrailingDigit(numString) {
+    numString = numString.slice(0, -1);
+    if (numString.endsWith(".")) {
+        numString = numString.slice(0, -1);
+    }
+    return numString === "-" ? "" : numString;
+}
+
+const backspaceBtn = document.getElementById("backspace");
+backspaceBtn.addEventListener("click", () => {
+    if (isOperationDone()) {
+        operand1 = stripTrailingDigit(operand1);
+        operand2 = "";
+        operator = "";
+        upperDisplay.textContent = "";
+        lowerDisplay.textContent = operand1;
+        operationDone = false;
+    } else {
+        if (operand2) {
+            operand2 = stripTrailingDigit(operand2);
+            lowerDisplay.textContent = operand2;
+        } else if (!isOperatorPresent()) {
+            operand1 = stripTrailingDigit(operand1);
+            lowerDisplay.textContent = operand1;
+        }
+    }
+})
+
 function add (num1, num2) {
     return +num1 + +num2;
 }
