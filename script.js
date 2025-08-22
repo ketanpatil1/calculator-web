@@ -22,7 +22,6 @@ function toggleTheme() {
 let operator = "";
 let operand1 = "";
 let operand2 = "";
-let expression = "";
 let operationDone = false;
 const upperDisplay = document.querySelector(".upper");
 const lowerDisplay = document.querySelector(".lower");
@@ -40,7 +39,7 @@ function containsDecimal(number) {
 
 const numbers = document.querySelectorAll(".number");
 for (const number of numbers) {
-    number.addEventListener ("click", (e) => {
+    number.addEventListener ("click", () => {
         if (isOperatorPresent()) {
             if (isOperationDone()) {
                 operand1 = number.id;
@@ -90,7 +89,7 @@ function stripTrailingDecimal(numString) {
 
 const operators = document.querySelectorAll(".operator");
 for (const op of operators) {
-    op.addEventListener ("click", (e) => {
+    op.addEventListener ("click", () => {
         if (operand1) {
             if ((!operator || !operand2)) {
                 operand1 = stripTrailingDecimal(operand1);
@@ -126,7 +125,7 @@ equalsBtn.addEventListener("click", () => {
 
 const actions = document.querySelectorAll(".action");
 for (const action of actions) {
-    action.addEventListener("click", (e) => {
+    action.addEventListener("click", () => {
         switch (action.id) {
             case "ac":
                 operator = "";
