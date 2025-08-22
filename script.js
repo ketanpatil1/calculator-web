@@ -102,7 +102,7 @@ for (const op of operators) {
                     upperDisplay.textContent = "";
                 } else {
                     upperDisplay.textContent = operand1 + operator + operand2;
-                    operand1 = operate(operator, operand1, operand2);
+                    operand1 = operateStr(operator, operand1, operand2);
                 }
                 operand2 = "";
                 operator = op.id;
@@ -118,7 +118,7 @@ equalsBtn.addEventListener("click", () => {
     if (operand2) {
         operand2 = stripTrailingDecimal(operand2);
         upperDisplay.textContent = operand1 + operator + operand2;
-        operand1 = operate(operator, operand1, operand2);
+        operand1 = operateStr(operator, operand1, operand2);
         lowerDisplay.textContent = operand1;
         operationDone = true;
     }
@@ -194,4 +194,7 @@ function operate(op, num1, num2) {
             console.log("Operator not recognized: " + op);
             return "error";
     }
+}
+function operateStr(op, num1, num2) {
+    return operate(op, num1, num2).toString();
 }
