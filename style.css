@@ -4,10 +4,13 @@
     --faded-content-color: #668388;
     --normal-btn-color: #c1efff;
     --normal-btn-color-hover: #b4e4f5;
+    --normal-btn-color-active: #b1dfef;
     --number-btn-color: #e4e8f3;
     --number-btn-color-hover: #d6dae7;
+    --number-btn-color-active: #d4d8e3;
     --equal-btn-color: #004499;
-    --equal-btn-color-hover: #002266;
+    --equal-btn-color-hover: #003388;
+    --equal-btn-color-active: #002277;
 }
 :root.dark {
     --main-bg-color: #121212;
@@ -15,10 +18,13 @@
     --faded-content-color: #466368;
     --normal-btn-color: #012f4f;
     --normal-btn-color-hover: #113f5f;
+    --normal-btn-color-active: #214f6f;
     --number-btn-color: #33383f;
     --number-btn-color-hover: #43484f;
+    --number-btn-color-active: #53585f;
     --equal-btn-color: #33afff;
-    --equal-btn-color-hover: #43bfff;
+    --equal-btn-color-hover: #53cfff;
+    --equal-btn-color-active: #73efff;
 }
 
 @font-face {
@@ -127,6 +133,9 @@ body {
 .buttons button:hover {
     background-color: var(--normal-btn-color-hover);
 }
+.buttons button:active {
+    background-color: var(--normal-btn-color-active);
+}
 
 .buttons {
     display: grid;
@@ -142,6 +151,9 @@ button[id="="] {
 button[id="="]:hover {
     background-color: var(--equal-btn-color-hover);
 }
+button[id="="]:active {
+    background-color: var(--equal-btn-color-active);
+}
 
 .buttons .top {
     display: grid;
@@ -155,6 +167,9 @@ button[id="="]:hover {
 }
 .buttons .main > button:hover {
     background-color: var(--number-btn-color-hover);
+}
+.buttons .main > button:active {
+    background-color: var(--number-btn-color-active);
 }
 
 .buttons .main {
@@ -172,4 +187,11 @@ button[id="="]:hover {
     grid-column: -2 / -1;
     grid-template-rows: subgrid;
     grid-row: 1 / -1;
+}
+
+.buttons button {
+    transition: transform 300ms, background-color 100ms;
+}
+.buttons button:active {
+    transform: scale(0.92);
 }
