@@ -133,6 +133,7 @@ body {
 .buttons button:hover {
     background-color: var(--normal-btn-color-hover);
 }
+.buttons button.active,
 .buttons button:active {
     background-color: var(--normal-btn-color-active);
 }
@@ -151,6 +152,7 @@ button[id="="] {
 button[id="="]:hover {
     background-color: var(--equal-btn-color-hover);
 }
+button[id="="].active,
 button[id="="]:active {
     background-color: var(--equal-btn-color-active);
 }
@@ -168,6 +170,7 @@ button[id="="]:active {
 .buttons .main > button:hover {
     background-color: var(--number-btn-color-hover);
 }
+.buttons .main > button.active,
 .buttons .main > button:active {
     background-color: var(--number-btn-color-active);
 }
@@ -192,6 +195,7 @@ button[id="="]:active {
 .buttons button {
     transition: transform 300ms, background-color 100ms;
 }
+.buttons button.active,
 .buttons button:active {
     transform: scale(0.92);
 }

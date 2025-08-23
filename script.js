@@ -225,3 +225,33 @@ function operate(op, num1, num2) {
 function operateStr(op, num1, num2) {
     return operate(op, num1, num2).toString();
 }
+
+document.addEventListener("keydown", (event) => {
+    let button;
+    switch (event.key) {
+        case "Enter":
+            event.preventDefault();
+            button = equalsBtn;
+            break;
+        case "Delete":
+            button = document.getElementById("ac");
+            break;
+        case "Backspace":
+            button = document.getElementById("backspace");
+            break;
+        default:
+            button = document.getElementById(event.key);
+            break;
+    }
+    if (button) {
+        const activeButton = document.querySelector(".active");
+        if (activeButton) {
+            activeButton.classList.remove("active");
+        }
+        button.classList.add("active");
+        button.click();
+    }
+});
+document.addEventListener("keyup", () => {
+    document.querySelector(".active").classList.remove("active");
+});
