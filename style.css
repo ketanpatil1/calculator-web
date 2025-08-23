@@ -193,7 +193,9 @@ button[id="="]:active {
 }
 
 .buttons button {
-    transition: transform 300ms, background-color 100ms;
+    transition-property: background-color, transform;
+    transition-duration: 100ms;
+    transtion-function: ease-out;
 }
 .buttons button.active,
 .buttons button:active {
