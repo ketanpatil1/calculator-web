@@ -229,6 +229,10 @@ function operateStr(op, num1, num2) {
 document.addEventListener("keydown", (event) => {
     let button;
     switch (event.key) {
+        case "/":
+            event.preventDefault();
+            button = document.getElementById("/");
+            break;
         case "Enter":
             event.preventDefault();
             button = equalsBtn;
