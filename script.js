@@ -257,5 +257,8 @@ document.addEventListener("keydown", (event) => {
     }
 });
 document.addEventListener("keyup", () => {
-    document.querySelector(".active").classList.remove("active");
+    const activeButton = document.querySelector(".active");
+    if (activeButton) {
+        activeButton.classList.remove("active");
+    }
 });
