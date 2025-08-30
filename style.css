@@ -192,12 +192,10 @@ button[id="="]:active {
     grid-row: 1 / -1;
 }
 
-.buttons button {
-    transition-property: background-color, transform;
-    transition-duration: 100ms;
-    transtion-function: ease-out;
-}
 .buttons button.active,
 .buttons button:active {
+    transition-property: background-color, transform;
+    transition-duration: 100ms;
+    transition-function: ease-out;
     transform: scale(0.92);
 }
