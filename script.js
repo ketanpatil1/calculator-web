@@ -177,9 +177,18 @@ backspaceBtn.addEventListener("click", () => {
     } else {
         if (operand2) {
             operand2 = stripTrailingDigit(operand2);
-            lowerDisplay.textContent = operand2;
+            if (operand2) {
+                lowerDisplay.textContent = operand2;
+            } else {
+                upperDisplay.textContent = "";
+                lowerDisplay.textContent = operand1 + operator;
+            }
         } else if (!isOperatorPresent()) {
             operand1 = stripTrailingDigit(operand1);
+            lowerDisplay.textContent = operand1;
+        } else {
+            operator = "";
+            upperDisplay.textContent = "";
             lowerDisplay.textContent = operand1;
         }
     }
