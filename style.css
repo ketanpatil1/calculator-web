@@ -71,6 +71,7 @@ body {
     padding: 20px;
     display: flex;
     flex-direction: column;
+    flex-shrink: 0;
     gap: 20px;
     position: relative;
     width: 90vw;
