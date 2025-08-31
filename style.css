@@ -58,10 +58,11 @@ div {
 
 body {
     background-color: var(--main-bg-color);
-    height: 100svh;
+    min-height: 100svh;
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 24px;
 }
 
 .calculator {
@@ -71,7 +72,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    position: fixed;
+    position: relative;
     width: 90vw;
     max-width: 470px;
 }
